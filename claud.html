@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoixBridge - Email Management for Coaches & Consultants</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Hero Section - Clean & Bold */
+        .hero {
+            background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+            color: white;
+            padding: 120px 30px 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.8em;
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .emoji {
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hero .subheadline {
+            font-size: 1.35em;
+            margin-bottom: 50px;
+            opacity: 0.9;
+            font-weight: 400;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .btn {
+            padding: 20px 45px;
+            font-size: 1.05em;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: #10B981;
+            color: white;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.45);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #0F172A;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: #f8f9fa;
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 30px;
+        }
+
+        .section-title {
+            font-size: 2.8em;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0F172A;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #64748B;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Who This Is For - Ultra Clean */
+        .who-section {
+            background: #F8FAFC;
+        }
+
+        .who-intro {
+            text-align: center;
+            font-size: 1.3em;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .who-list {
+            background: white;
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.06);
+            max-width: 750px;
+            margin: 0 auto;
+            border: 1px solid #E2E8F0;
+        }
+
+        .who-list ul {
+            list-style: none;
+        }
+
+        .who-list li {
+            padding: 22px 0;
+            font-size: 1.2em;
+            position: relative;
+            padding-left: 45px;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .who-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #EF4444;
+            font-weight: bold;
+            font-size: 1.4em;
+            width: 35px;
+            height: 35px;
+            background: #FEE2E2;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .who-cta {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #10B981;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid #E2E8F0;
+        }
+
+        /* What I Do - Card Grid */
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .offer-card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+            transition: all 0.3s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-color: #10B981;
+        }
+
+        .offer-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #0F172A;
+            font-weight: 700;
+        }
+
+        .offer-card p {
+            color: #64748B;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+
+        .offer-tagline {
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: 700;
+            color: white;
+            margin-top: 50px;
+            padding: 45px;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.25);
+        }
+
+        /* How It Works - Minimal & Clear */
+        .how-section {
+            background: white;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            background: #F8FAFC;
+            padding: 50px 35px;
+            border-radius: 20px;
+            border: 2px solid #E2E8F0;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            border-color: #10B981;
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            font-size: 3.5em;
+            font-weight: 900;
+            margin-bottom: 25px;
+            color: #10B981;
+            background: white;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 16px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .step h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #0F172A;
+            font-weight: 700;
+        }
+
+        .step p {
+            font-size: 1.1em;
+            color: #64748B;
+            line-height: 1.7;
+        }
+
+        /* Pricing - Premium Look */
+        .pricing-section {
+            background: #F8FAFC;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            max-width: 1100px;
+            margin: 0 auto 50px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #E2E8F0;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+        }
+
+        .pricing-card.featured {
+            border-color: #10B981;
+            border-width: 3px;
+            box-shadow: 0 10px 50px rgba(16, 185, 129, 0.15);
+        }
+
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #10B981;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            margin-top: 15px;
+            color: #0F172A;
+            font-weight: 700;
+        }
+
+        .price {
+            font-size: 3.5em;
+            font-weight: 900;
+            color: #10B981;
+            margin: 25px 0;
+        }
+
+        .price span {
+            font-size: 0.35em;
+            color: #64748B;
+            font-weight: 500;
+        }
+
+        .features {
+            list-style: none;
+            margin: 35px 0;
+            text-align: left;
+        }
+
+        .features li {
+            padding: 16px 0;
+            position: relative;
+            padding-left: 40px;
+            color: #475569;
+            font-size: 1.05em;
+        }
+
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10B981;
+            font-weight: bold;
+            font-size: 1.3em;
+            width: 28px;
+            height: 28px;
+            background: #D1FAE5;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Benefits - Icon Grid */
+        .benefits-section {
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .benefit-card {
+            background: #F8FAFC;
+            padding: 40px 35px;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid #E2E8F0;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            border-color: #10B981;
+            background: white;
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3em;
+            color: #0F172A;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        /* Form Section - Clean & Professional */
+        .form-section {
+            background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+            color: white;
+        }
+
+        .form-section .section-title {
+            color: white;
+        }
+
+        .form-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .trial-form {
+            max-width: 750px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px 55px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #0F172A;
+            font-size: 1.05em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 18px;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 1.05em;
+            font-family: inherit;
+            transition: all 0.3s;
+            background: #F8FAFC;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #10B981;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-note {
+            text-align: center;
+            margin-top: 25px;
+            color: #64748B;
+            font-size: 1em;
+        }
+
+        /* Contact - Clean Grid */
+        .contact-section {
+            background: #F8FAFC;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 2px solid #E2E8F0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: #10B981;
+            transform: translateY(-5px);
+        }
+
+        .contact-item strong {
+            display: block;
+            font-size: 1.1em;
+            color: #64748B;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85em;
+        }
+
+        .contact-item a {
+            color: #10B981;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #059669;
+        }
+
+        /* Footer */
+        footer {
+            background: #0F172A;
+            color: #94A3B8;
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 20px 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero .subheadline {
+                font-size: 1.1em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .trial-form {
+                padding: 40px 25px;
+            }
+
+            .who-list {
+                padding: 40px 30px;
+            }
+
+            .offer-grid,
+            .steps,
+            .pricing-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1><span class="emoji">🔥</span> I Manage Your Inbox So You Never Lose a Client Again.</h1>
+            <p class="subheadline">Daily email clean-up, lead follow-ups, and complete inbox control for busy coaches & consultants.</p>
+            <div class="cta-buttons">
+                <a href="#trial-form" class="btn btn-primary">Start Your 7-Day Free Trial</a>
+                <a href="#contact" class="btn btn-secondary">Book a Quick Call</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who This Is For -->
+    <section class="who-section">
+        <div class="container">
+            <h2 class="section-title">🌟 Who This Service Is For</h2>
+            <p class="who-intro">You're a coach or consultant who:</p>
+            <div class="who-list">
+                <ul>
+                    <li>Gets too many emails</li>
+                    <li>Can't reply fast</li>
+                    <li>Hates admin</li>
+                    <li>Misses leads</li>
+                    <li>Loses money because of slow follow-up</li>
+                </ul>
+                <p class="who-cta">If that's you — I fix it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What I Do -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">📩 What I Do For You</h2>
+            <p class="section-subtitle">Complete email management that turns your inbox into a revenue-generating machine</p>
+            <div class="offer-grid">
+                <div class="offer-card">
+                    <h3>✓ Daily Inbox Clean-Up</h3>
+                    <p>No unread emails. Ever.</p>
+                </div>
+                <div class="offer-card">
+                    <h3>✓ Reply to Leads & Clients</h3>
+                    <p>Using your tone and style.</p>
+                </div>
+                <div class="offer-card">
+                    <h3>✓ Follow-Up Sequences</h3>
+                    <p>So you close more clients without lifting a finger.</p>
+                </div>
+                <div class="offer-card">
+                    <h3>✓ Prioritizing Important Emails</h3>
+                    <p>You only see what matters.</p>
+                </div>
+                <div class="offer-card">
+                    <h3>✓ Tagging, Labeling & Organizing</h3>
+                    <p>Your inbox becomes clean and predictable.</p>
+                </div>
+                <div class="offer-card">
+                    <h3>✓ Daily Summary Report</h3>
+                    <p>You know exactly what happened every day.</p>
+                </div>
+            </div>
+            <div class="offer-tagline">
+                Your inbox becomes a revenue machine — not a stress factory.
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-section">
+        <div class="container">
+            <h2 class="section-title">⚡ How It Works</h2>
+            <p class="section-subtitle">Get started in three simple steps — zero complexity, maximum results</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Intake Form</h3>
+                    <p>Tell me about your business + inbox needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>7-Day Free Trial</h3>
+                    <p>I handle your inbox for real — zero risk for you.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Monthly Service</h3>
+                    <p>Keep the system running smoothly and save 2–3 hours daily.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">💰 Pricing</h2>
+            <p class="section-subtitle">Choose the plan that fits your business — all plans include a 7-day free trial</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$299<span>/mo</span></div>
+                    <ul class="features">
+                        <li>Inbox clean-up</li>
+                        <li>Reply templates</li>
+                        <li>Daily summaries</li>
+                        <li>1 inbox included</li>
+                    </ul>
+                    <a href="#trial-form" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Start Free Trial</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Pro</h3>
+                    <div class="price">$499<span>/mo</span></div>
+                    <ul class="features">
+                        <li>Everything in Starter</li>
+                        <li>Lead follow-ups</li>
+                        <li>Priority responses</li>
+                        <li>2 inboxes</li>
+                    </ul>
+                    <a href="#trial-form" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Start Free Trial</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">$699<span>/mo</span></div>
+                    <ul class="features">
+                        <li>Full daily inbox management</li>
+                        <li>All follow-ups</li>
+                        <li>VIP support</li>
+                        <li>3 inboxes</li>
+                        <li>Weekly optimization calls</li>
+                    </ul>
+                    <a href="#trial-form" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Start Free Trial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">📈 Why Clients Love This Service</h2>
+            <p class="section-subtitle">Real results that transform how you work and grow your business</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Faster replies = more clients closed</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">😌</div>
+                    <h3>Zero inbox stress</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏰</div>
+                    <h3>Saves 2–3 hours every day</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💼</div>
+                    <h3>Professional communication</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Less chaos, more control</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>You focus on coaching → I handle the rest</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="trial-form">
+        <div class="container">
+            <h2 class="section-title">📥 Start Your Free Trial</h2>
+            <p class="section-subtitle">Fill this form to begin your 7-day trial. No credit card required.</p>
+            <div class="trial-form">
+                <!-- REPLACE THIS IFRAME WITH YOUR GOOGLE FORM EMBED CODE -->
+                <!-- Step 1: Create your Google Form at forms.google.com -->
+                <!-- Step 2: Click Send → Click < > (embed) → Copy iframe code -->
+                <!-- Step 3: Paste it here replacing the placeholder below -->
+                
+                <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/viewform?embedded=true" 
+                        width="100%" 
+                        height="1400" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0">
+                    Loading form...
+                </iframe>
+                
+                <p class="form-note" style="margin-top: 20px;">✓ No credit card required  •  ✓ Cancel anytime  •  ✓ Full access during trial</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">📞 Contact Us</h2>
+            <p class="section-subtitle">Have questions? Reach out through any channel below</p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    <a href="mailto:youragency@email.com">youragency@email.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>WhatsApp</strong>
+                    <a href="https://wa.me/YourNumber" target="_blank">+YourNumber</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Instagram</strong>
+                    <a href="https://instagram.com/youragency" target="_blank">@youragency</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 VoixBridge Email Management — All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form submission: only attach handler if a form with id="trialForm" exists
+        (function() {
+            const trialForm = document.getElementById('trialForm');
+            if (!trialForm) {
+                // The page currently embeds a Google Form via iframe; no native form to handle.
+                console.log('No trial form found on the page (embedded form likely in an iframe).');
+                return;
+            }
+
+            trialForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                console.log('Form submitted:', data);
+                alert("🎉 Thank you! Your free trial request has been submitted.\n\nWe'll be in touch within 24 hours to get you set up.");
+                this.reset();
+            });
+        })();
+    </script>
+</body>
+</html>

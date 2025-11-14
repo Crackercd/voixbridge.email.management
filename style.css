@@ -1,0 +1,145 @@
+/* GLOBAL STYLES */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f9fa;
+    color: #333;
+}
+
+/* HEADERS */
+header {
+    background: #111827;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+header h1 {
+    margin: 0;
+    font-size: 42px;
+}
+header p {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+/* BUTTONS */
+.btn, 
+.price-btn,
+form button {
+    display: inline-block;
+    padding: 14px 26px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.btn:hover,
+.price-btn:hover,
+form button:hover {
+    background: #1e4ecb;
+}
+
+/* SECTION WRAPPER */
+section {
+    max-width: 850px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+}
+ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* PRICING */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.price-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid #2563eb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.price-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.price-amount {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #2563eb;
+}
+
+/* FORM SECTION */
+.trial-form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+}
+
+form input, 
+form textarea, 
+form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+form button {
+    width: 100%;
+    font-size: 18px;
+}
+
+/* THANK YOU MESSAGE */
+#thank-you-message h2 {
+    margin: 0 0 10px 0;
+    font-size: 30px;
+}
+#thank-you-message p {
+    font-size: 18px;
+}
+
+/* CONTACT */
+.card p {
+    margin: 6px 0;
+    font-size: 16px;
+}
+
+/* FOOTER */
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 40px;
+    font-size: 15px;
+}

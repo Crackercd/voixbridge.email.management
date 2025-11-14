@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Management Services</title>
+    <link rel="stylesheet" href="Landingpage.css">
+
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+    <header>
+        <h1>Inbox Management for Coaches & Consultants</h1>
+        <p>I manage your inbox so you never lose clients again.</p>
+        <a href="#trial-form" class="btn">Start Your 7-Day Free Trial</a>
+    </header>
+
+    <!-- WHO THIS SERVICE IS FOR -->
+    <section>
+        <h2>Who This Service Is For</h2>
+        <div class="card">
+            <ul>
+                <li>You get too many emails.</li>
+                <li>You reply slow and lose leads.</li>
+                <li>Your inbox is messy and stressful.</li>
+                <li>You waste time on admin work.</li>
+                <li>You want more clients without doing more work.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- WHAT I DO -->
+    <section>
+        <h2>What I Do For You</h2>
+        <div class="card">
+            <ul>
+                <li>Daily inbox clean-up</li>
+                <li>Replying to leads + clients</li>
+                <li>Lead follow-up sequences</li>
+                <li>Tagging + organizing emails</li>
+                <li>Priority sorting</li>
+                <li>Daily summary reports</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section>
+        <h2>How It Works</h2>
+        <div class="card">
+            <ul>
+                <li><strong>Step 1:</strong> Fill intake form</li>
+                <li><strong>Step 2:</strong> 7-day free trial</li>
+                <li><strong>Step 3:</strong> Continue monthly if results are good</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section>
+        <h2>Pricing Plans</h2>
+        <div class="pricing-grid">
+
+            <div class="price-card">
+                <div>
+                    <div class="price-title">Starter</div>
+                    <div class="price-amount">$299/mo</div>
+                    <ul>
+                        <li>Inbox cleanup</li>
+                        <li>Basic replies</li>
+                        <li>Daily summary</li>
+                        <li>1 inbox</li>
+                    </ul>
+                </div>
+                <a href="#trial-form" class="price-btn">Choose Starter</a>
+            </div>
+
+            <div class="price-card">
+                <div>
+                    <div class="price-title">Pro</div>
+                    <div class="price-amount">$499/mo</div>
+                    <ul>
+                        <li>Everything in Starter</li>
+                        <li>Lead follow-ups</li>
+                        <li>Faster responses</li>
+                        <li>2 inboxes</li>
+                    </ul>
+                </div>
+                <a href="trial-form" class="price-btn">Choose Pro</a>
+            </div>
+
+            <div class="price-card">
+                <div>
+                    <div class="price-title">Premium</div>
+                    <div class="price-amount">$699/mo</div>
+                    <ul>
+                        <li>Full inbox management</li>
+                        <li>All follow-ups</li>
+                        <li>VIP support</li>
+                        <li>3 inboxes</li>
+                    </ul>
+                </div>
+                <a href="#trial-form" class="price-btn">Choose Premium</a>
+            </div>
+
+        </div>
+    </section>
+<section class="form-section" id="trial-form">
+    <div class="container">
+        <h2 class="section-title">📥 Start Your Free Trial</h2>
+        <p class="section-subtitle">Fill this form to begin your 7-day trial. No credit card required.</p>
+
+        <div class="trial-form">
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSd68ixE2oJhRJ_8LoqAQZiJgObt6XeGbkBSYouv6PIODnF-KQ/formResponse" method="POST" target="hidden_iframe" onsubmit="showThankYou()">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="entry.1652400764" placeholder="Your Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="entry.1722361515" placeholder="Your Email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="plan">Service / Plan</label>
+                    <select id="plan" name="entry.142575738" required>
+                        <option value="">Select a plan</option>
+                        <option value="Starter">Starter</option>
+                        <option value="Pro">Pro</option>
+                        <option value="Premium">Premium</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="website">Website or Instagram URL</label>
+                    <input type="text" id="website" name="entry.1859397341" placeholder="Your Website or IG handle" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="problem">Inbox Challenges / What you need</label>
+                    <textarea id="problem" name="entry.1256483568" placeholder="Describe your inbox problems or needs" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Start Free Trial</button>
+
+            </form>
+            <div id="thank-you-message" style="display:none; text-align:center; margin-top:20px;">
+                <h2>🎉 Thank You!</h2>
+                <p>You are now connected. Our team will contact you shortly.</p>
+            </div>
+
+            <p class="form-note" style="margin-top: 20px;">✓ No credit card required &nbsp; • &nbsp; ✓ Cancel anytime &nbsp; • &nbsp; ✓ Full access during trial</p>
+        </div>
+    </div>
+</section>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+
+    <!-- CONTACT -->
+    <section>
+        <h2>Contact</h2>
+        <div class="card">
+            <p>Email: support@voixbridge.com</p>
+            <p>WhatsApp: +123456789</p>
+            <p>Instagram: @youragency</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2025 VoixBridge — All Rights Reserved.
+    </footer>
+
+</body>
+</html>
+<script>
+    function showThankYou() {
+        // Hide the form
+        document.querySelector('.trial-form form').style.display = 'none';
+
+        // Show the thank you message
+        document.getElementById('thank-you-message').style.display = 'block';
+    }
+</script>
