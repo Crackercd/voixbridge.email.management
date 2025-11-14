@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Email Management Services</title>
-    <link rel="stylesheet" href="Landingpage.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -107,27 +107,29 @@
 
         </div>
     </section>
+
+<!-- Trial Form Section -->
 <section class="form-section" id="trial-form">
     <div class="container">
         <h2 class="section-title">📥 Start Your Free Trial</h2>
         <p class="section-subtitle">Fill this form to begin your 7-day trial. No credit card required.</p>
 
         <div class="trial-form">
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSd68ixE2oJhRJ_8LoqAQZiJgObt6XeGbkBSYouv6PIODnF-KQ/formResponse" method="POST" target="hidden_iframe" onsubmit="showThankYou()">
-
+            <!-- Updated HTML Form -->
+            <form id="trialForm">
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="entry.1652400764" placeholder="Your Name" required>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="entry.1722361515" placeholder="Your Email" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
                 </div>
 
                 <div class="form-group">
                     <label for="plan">Service / Plan</label>
-                    <select id="plan" name="entry.142575738" required>
+                    <select id="plan" name="plan" required>
                         <option value="">Select a plan</option>
                         <option value="Starter">Starter</option>
                         <option value="Pro">Pro</option>
@@ -137,36 +139,67 @@
 
                 <div class="form-group">
                     <label for="website">Website or Instagram URL</label>
-                    <input type="text" id="website" name="entry.1859397341" placeholder="Your Website or IG handle" required>
+                    <input type="text" id="website" name="website" placeholder="Your Website or IG handle" required>
                 </div>
 
                 <div class="form-group">
                     <label for="problem">Inbox Challenges / What you need</label>
-                    <textarea id="problem" name="entry.1256483568" placeholder="Describe your inbox problems or needs" required></textarea>
+                    <textarea id="problem" name="problem" placeholder="Describe your inbox problems or needs" required></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Start Free Trial</button>
-
             </form>
+
             <div id="thank-you-message" style="display:none; text-align:center; margin-top:20px;">
                 <h2>🎉 Thank You!</h2>
                 <p>You are now connected. Our team will contact you shortly.</p>
             </div>
 
-            <p class="form-note" style="margin-top: 20px;">✓ No credit card required &nbsp; • &nbsp; ✓ Cancel anytime &nbsp; • &nbsp; ✓ Full access during trial</p>
+            <p class="form-note" style="margin-top: 20px;">
+                ✓ No credit card required &nbsp; • &nbsp; ✓ Cancel anytime &nbsp; • &nbsp; ✓ Full access during trial
+            </p>
         </div>
     </div>
 </section>
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
+<!-- JavaScript to handle form submission -->
+<script>
+const form = document.getElementById("trialForm");
+const thankYou = document.getElementById("thank-you-message");
+
+// Replace this with your Web App URL
+const webAppURL = "https://script.google.com/macros/s/AKfycbwSasQPh_en9X5wqCzkMt0IU1oy7L6-7IcNoKNr4pg/exec";
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault(); // prevent default form submission
+
+    const data = new FormData(form);
+    const params = new URLSearchParams();
+    data.forEach((value, key) => params.append(key, value));
+
+    fetch(webAppURL, {
+        method: "POST",
+        body: params
+    })
+    .then(res => res.text())
+    .then(response => {
+        form.style.display = "none";  // hide form
+        thankYou.style.display = "block";  // show thank you
+    })
+    .catch(err => {
+        alert("Error submitting form. Please try again.");
+        console.error(err);
+    });
+});
+</script>
 
     <!-- CONTACT -->
     <section>
         <h2>Contact</h2>
         <div class="card">
-            <p>Email: support@voixbridge.com</p>
-            <p>WhatsApp: +123456789</p>
-            <p>Instagram: @youragency</p>
+            <p>Email: <a href="mailto:support@voixbridge.com" style="color: rgb(29, 28, 28);">support@voixbridge.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/923438216300" style="color: rgb(19, 18, 18);">+923438216300</a></p>
+            <p>Instagram: <a href="https://instagram.com/codewavecom" style="color: rgb(15, 15, 15);">@codewavecom</a></p>
         </div>
     </section>
 
