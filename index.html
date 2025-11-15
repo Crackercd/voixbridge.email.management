@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Email Management Services</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
     <!-- HERO SECTION -->
     <header>
-        <h1>Inbox Management for Coaches & Consultants</h1>
+        <h1>Inbox Management for Business owner & CEOs</h1>
         <p>I manage your inbox so you never lose clients again.</p>
         <a href="#trial-form" class="btn">Start Your 7-Day Free Trial</a>
     </header>
@@ -23,7 +21,7 @@
         <div class="card">
             <ul>
                 <li>You get too many emails.</li>
-                <li>You reply slow and lose leads.</li>
+                <li>You reply slowly and lose leads.</li>
                 <li>Your inbox is messy and stressful.</li>
                 <li>You waste time on admin work.</li>
                 <li>You want more clients without doing more work.</li>
@@ -88,7 +86,7 @@
                         <li>2 inboxes</li>
                     </ul>
                 </div>
-                <a href="trial-form" class="price-btn">Choose Pro</a>
+                <a href="#trial-form" class="price-btn">Choose Pro</a>
             </div>
 
             <div class="price-card">
@@ -108,44 +106,21 @@
         </div>
     </section>
 
-<!-- NETLIFY WORKING TRAIL FORM -->
-<section id="trial-form" class="form-section">
-    <div class="container">
-        <h2 class="section-title">📥 Start Your Free Trial</h2>
-        <p class="section-subtitle">Fill this form to begin your 7-day trial.</p>
+    <!-- TRIAL FORM SECTION -->
+    <section id="trial-form" class="form-section">
+        <div class="container">
+            <h2>📥 Start Your Free Trial</h2>
+            <p>Fill this form to begin your 7-day trial.</p>
 
-        <!-- IMPORTANT: Netlify requires:
-             1) name="" attribute
-             2) data-netlify="true"
-             3) hidden input form-name matching the form name
-        -->
-        <form name="trial-form" method="POST" data-netlify="true">
-            <!-- Netlify needs this to identify your form -->
-            <input type="hidden" name="form-name" value="trial-form">
+            <form name="trial-form" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="trial-form">
 
-            <div class="form-group">
                 <label for="name">Full Name</label>
-                <input 
-                    type="text" 
-                    id="name" 
-                    name="name"
-                    placeholder="Your Name" 
-                    required
-                >
-            </div>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
 
-            <div class="form-group">
                 <label for="email">Email Address</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email"
-                    placeholder="Your Email" 
-                    required
-                >
-            </div>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
 
-            <div class="form-group">
                 <label for="plan">Service / Plan</label>
                 <select id="plan" name="plan" required>
                     <option value="">Select a plan</option>
@@ -153,102 +128,30 @@
                     <option value="Pro">Pro</option>
                     <option value="Premium">Premium</option>
                 </select>
-            </div>
 
-            <div class="form-group">
                 <label for="website">Website or Instagram URL</label>
-                <input 
-                    type="text" 
-                    id="website" 
-                    name="website"
-                    placeholder="Your Website or IG handle" 
-                    required
-                >
-            </div>
+                <input type="text" id="website" name="website" placeholder="Your Website or IG handle" required>
 
-            <div class="form-group">
                 <label for="problem">Inbox Challenges / What you need</label>
-                <textarea 
-                    id="problem" 
-                    name="problem"
-                    placeholder="Describe your inbox problems or needs" 
-                    required
-                ></textarea>
-            </div>
+                <textarea id="problem" name="problem" placeholder="Describe your inbox problems" required></textarea>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%;">
-                Start Free Trial
-            </button>
-        </form>
-
-        <!-- Thank You Message (hidden by default) -->
-        <div id="thank-you-message" style="display:none; text-align:center; margin-top:20px;">
-            <h2>🎉 Thank You!</h2>
-            <p>Your form was submitted successfully!</p>
-        </div>
-    </div>
-</section>
-
-<!-- SIMPLE JS TO SHOW THANK-YOU MESSAGE -->
-<script>
-document.querySelector('form[name="trial-form"]').addEventListener('submit', function() {
-    setTimeout(() => {
-        document.getElementById('thank-you-message').style.display = 'block';
-    }, 600);
-});
-</script>
-
+                <button type="submit">Start Free Trial</button>
+            </form>
 
             <div id="thank-you-message" style="display:none; text-align:center; margin-top:20px;">
                 <h2>🎉 Thank You!</h2>
-                <p>You are now connected. Our team will contact you shortly.</p>
+                <p>Your form was submitted successfully!</p>
             </div>
-
-            <p class="form-note" style="margin-top: 20px;">
-                ✓ No credit card required &nbsp; • &nbsp; ✓ Cancel anytime &nbsp; • &nbsp; ✓ Full access during trial
-            </p>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- JavaScript to handle form submission -->
-<script>
-const form = document.getElementById("trialForm");
-const thankYou = document.getElementById("thank-you-message");
-
-// Replace this with your Web App URL
-const webAppURL = "https://script.google.com/macros/s/AKfycbwSasQPh_en9X5wqCzkMt0IU1oy7L6-7IcNoKNr4pg/exec";
-
-form.addEventListener("submit", function(e) {
-    e.preventDefault(); // prevent default form submission
-
-    const data = new FormData(form);
-    const params = new URLSearchParams();
-    data.forEach((value, key) => params.append(key, value));
-
-    fetch(webAppURL, {
-        method: "POST",
-        body: params
-    })
-    .then(res => res.text())
-    .then(response => {
-        form.style.display = "none";  // hide form
-        thankYou.style.display = "block";  // show thank you
-    })
-    .catch(err => {
-        alert("Error submitting form. Please try again.");
-        console.error(err);
-    });
-});
-</script>
-
-    <!-- CONTACT -->
+    <!-- CONTACT SECTION -->
     <section>
         <h2>Contact</h2>
         <div class="card">
-            <p>Email: <a href="mailto:support@voixbridge.com" style="color: rgb(29, 28, 28);">support@voixbridge.com</a></p>
-            <p>WhatsApp: <a href="https://wa.me/923438216300" style="color: rgb(19, 18, 18);">+923438216300</a></p>
-            <p>Instagram: <a href="https://instagram.com/codewavecom" style="color: rgb(15, 15, 15);">@codewavecom</a></p>
+            <p>Email: <a href="mailto:support@voixbridge.com">support@voixbridge.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/923438216300">+923438216300</a></p>
+            <p>Instagram: <a href="https://instagram.com/codewavecom">@codewavecom</a></p>
         </div>
     </section>
 
@@ -257,14 +160,7 @@ form.addEventListener("submit", function(e) {
         © 2025 VoixBridge — All Rights Reserved.
     </footer>
 
+    <!-- External JS -->
+    <script src="form.js"></script>
 </body>
 </html>
-<script>
-    function showThankYou() {
-        // Hide the form
-        document.querySelector('.trial-form form').style.display = 'none';
-
-        // Show the thank you message
-        document.getElementById('thank-you-message').style.display = 'block';
-    }
-</script>
