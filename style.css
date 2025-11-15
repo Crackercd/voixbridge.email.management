@@ -213,3 +213,65 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+/* Testimonials Grid */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.testimonial-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 16px;
+}
+.testimonial-card h4 {
+  margin-top: 12px;
+  color: #2563eb;
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.portfolio-item h4 {
+  margin-bottom: 12px;
+  color: #111827;
+  font-size: 18px;
+}
+
+/* Before/After Images Side by Side */
+.before-after {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+}
+.image-wrapper img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+.label {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(37, 99, 235, 0.9);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
