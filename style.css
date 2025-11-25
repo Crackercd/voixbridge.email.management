@@ -1,257 +1,574 @@
-/* GLOBAL STYLES */
-body {
-    font-family: Arial, sans-serif;
+/* --- 1. BRAND KIT VARIABLES --- */
+:root {
+    /* Strict Monochrome Palette based on your Profile */
+    --bg-color: #ffffff; 
+    --text-main: #000000; 
+    --text-muted: #555555;
+    --border-color: #dbdbdb; /* Instagram-like grey border */
+    --highlight-bg: #fafafa;
+    
+    /* Typography */
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    /* Animation */
+    --transition: all 0.3s ease;
+}
+
+* {
     margin: 0;
     padding: 0;
-    background: #f8f9fa;
-    color: #333;
+    box-sizing: border-box;
 }
 
-/* HEADERS */
-header {
-    background: #111827;
-    color: white;
-    padding: 60px 20px;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- 2. TYPOGRAPHY (Clean & Geometric) --- */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.2rem;
     text-align: center;
-}
-header h1 {
-    margin: 0;
-    font-size: 42px;
-}
-header p {
-    margin-top: 15px;
-    font-size: 18px;
+    margin-bottom: 50px;
 }
 
-/* BUTTONS */
-.btn, 
-.price-btn,
-form button {
+p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* --- 3. BRAND BUTTONS (Pill Shaped like Instagram) --- */
+.btn, .price-btn, button[type="submit"] {
     display: inline-block;
-    padding: 14px 26px;
-    background: #2563eb;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 18px;
-    border: none;
+    background: #000;
+    color: #fff;
+    padding: 14px 32px;
+    border: 2px solid #000;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: var(--transition);
+    border-radius: 50px; /* BRAND KIT: Rounded Pill Shape */
+    text-decoration: none;
     text-align: center;
-    transition: 0.3s;
-}
-.btn:hover,
-.price-btn:hover,
-form button:hover {
-    background: #1e4ecb;
-}
-.contact-btn i {
-    margin-right: 10px;
-    font-size: 18px;
 }
 
-/* SECTION WRAPPER */
+.btn:hover, .price-btn:hover, button[type="submit"]:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* --- 4. LAYOUT --- */
 section {
-    max-width: 850px;
-    margin: 50px auto;
+    padding: 100px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* HEADER HERO */
+header {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     padding: 0 20px;
 }
-h2 {
-    font-size: 30px;
-    margin-bottom: 15px;
-    color: #111827;
-    text-align: center;
+
+header p {
+    max-width: 600px;
+    margin-bottom: 30px;
 }
 
-/* CARD */
+/* --- 5. CARDS (Minimalist & Clean Borders) --- */
 .card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    border: 1px solid #ddd;
-}
-ul {
-    margin: 0;
-    padding-left: 20px;
+    background: #fff;
+    border: 1px solid var(--border-color); /* Instagram-style thin border */
+    border-radius: 20px; /* Slightly rounded cards */
+    padding: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03); /* Very subtle shadow */
 }
 
-/* PRICING */
+.card ul li {
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.card ul li::before {
+    content: '✓';
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: 800;
+    color: #000;
+}
+
+/* --- 6. PRICING --- */
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    align-items: center;
 }
+
 .price-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    border: 2px solid #2563eb;
+    background: #fff;
+    padding: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    transition: var(--transition);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    height: 100%;
 }
+
+.price-card:hover {
+    border-color: #000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transform: translateY(-5px);
+}
+
+/* Recommended Card Styles */
+.price-card.recommended {
+    border: 2px solid #000;
+    background: #fff;
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.price-card.recommended:hover {
+    transform: scale(1.08) translateY(-5px);
+}
+
+.badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
 .price-title {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--text-muted);
 }
+
 .price-amount {
-    font-size: 28px;
-    margin-bottom: 15px;
-    color: #2563eb;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    display: block;
+    color: #000;
+    letter-spacing: -1px;
 }
+
 .price-card ul {
     list-style: none;
-    padding: 0;
-}
-.price-card li {
-    margin-bottom: 8px;
+    margin-bottom: 30px;
 }
 
-/* FORM SECTION */
-form.trial-form, .form-section .container {
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-}
-
-form input, 
-form textarea, 
-form select {
-    width: 100%;
-    padding: 12px;
+.price-card ul li {
     margin-bottom: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
-
-form button {
-    width: 100%;
-    font-size: 18px;
-}
-
-/* THANK YOU MESSAGE */
-#thank-you-message h2 {
-    margin: 0 0 10px 0;
-    font-size: 30px;
-    text-align: center;
-}
-#thank-you-message p {
-    font-size: 18px;
-    text-align: center;
-}
-
-/* CONTACT SECTION */
-/* CONTACT BUTTONS */
-.contact-btn {
+    color: #444;
+    font-size: 0.95rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 20px;
-    background: #2563eb;
+}
+
+.price-card ul li::before {
+    content: '•';
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+
+/* --- 7. LUXURY CASE STUDY GRID (NEW) --- */
+.luxury-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.case-study-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.case-study-card:hover {
+    border-color: #000;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+}
+
+/* Header Area: Name + Badge */
+.case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.case-header h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.result-badge {
+    background: #000;
     color: #fff;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 10px auto;
-    transition: 0.3s;
-    width: 100%; /* changed from 80% */
-    max-width: 300px; /* keeps it from being too wide on big screens */
-    box-sizing: border-box; /* ensures padding doesn't break width */
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
-/* Responsive Fix for smaller screens */
-@media screen and (max-width: 400px) {
-    .contact-btn {
-        font-size: 14px; /* optional: slightly smaller text on tiny screens */
-        padding: 10px 15px;
-    }
+/* Before / After Visual Container */
+.comparison-visual {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    height: 120px;
 }
 
-/* FOOTER */
-footer {
-    background: #111827;
-    color: white;
+.visual-box {
+    flex: 1;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 25px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* "Before" State styling */
+.visual-box.before {
+    background-color: #f3f3f3;
+    border: 1px dashed #ccc;
+    color: #888;
+}
+
+/* "After" State styling */
+.visual-box.after {
+    background-color: #000;
+    color: #fff;
+}
+
+.visual-box span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    opacity: 0.7;
+}
+
+.visual-box strong {
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+/* The Quote */
+.case-quote {
+    font-size: 0.95rem;
+    color: #444;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* --- 8. MODAL OVERLAY (Minimalist & Compact) --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9); /* White overlay instead of dark */
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Compact Modal Overrides */
+.modal-content {
+    background: #fff;
+    width: 100%;
+    max-width: 400px !important; /* Reduced width */
+    padding: 30px !important;    /* Reduced padding */
+    border: 2px solid #000; /* Bold black border */
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    position: relative;
+    transform: translateY(30px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #999;
+    transition: 0.2s;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+/* Adjust spacing inside the form */
+.modal-content h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 5px !important;
+    text-align: left;
+}
+.modal-content p {
+    font-size: 0.9rem !important;
+    margin-bottom: 15px !important;
+    text-align: left;
+    color: #666;
+}
+
+form label {
+    display: block;
+    color: #000;
+    font-weight: 700;
+    margin-top: 12px !important; /* Less space between fields */
+    margin-bottom: 4px !important;
+    font-size: 0.8rem !important;
+}
+
+form input, form select {
+    width: 100%;
+    background: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 12px;
+    padding: 10px !important; /* Compact input height */
+    font-size: 0.95rem !important;
+    color: #000;
+    outline: none;
+    font-family: var(--font-main);
+    transition: all 0.2s ease;
+}
+
+form select {
+    appearance: auto;
+}
+
+form input:focus, form select:focus {
+    background: #fff;
+    border-color: #000;
+}
+
+input[readonly] {
+    background-color: #f0f0f0;
+    color: #555;
+    cursor: default;
+}
+
+button[type="submit"] {
+    width: 100%;
+    margin-top: 20px !important;
+    padding: 12px !important;
+}
+
+/* Thank You Message Styles */
+#thank-you-message {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.success-icon {
+    font-size: 3rem;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+/* --- 9. CONTACT & FOOTER --- */
+.contact-card {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
     margin-top: 40px;
-    font-size: 15px;
+}
+
+.contact-btn {
+    border: 1px solid #dbdbdb;
+    border-radius: 50px;
+    padding: 12px 28px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-btn:hover {
+    border-color: #000;
+    background: #fafafa;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 0.85rem;
+    color: #999;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* --- 10. ANIMATION CLASSES --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- NEW: VISUAL PORTFOLIO SECTION (Add this to the bottom) --- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.portfolio-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 25px;
+    transition: var(--transition);
+}
+
+.portfolio-card:hover {
+    border-color: #000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.portfolio-header {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #000;
+}
+
+.compare-container {
+    display: flex;
+    gap: 15px;
+}
+
+.compare-item {
+    flex: 1;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    /* Aspect ratio ensures images look uniform (Portrait 4:5) */
+    aspect-ratio: 4/5; 
+    background: #f9f9f9;
+    border: 1px solid #eee;
+}
+
+.compare-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills box without stretching */
+    transition: transform 0.5s ease;
+}
+
+/* Subtle zoom effect on hover */
+.portfolio-card:hover .compare-item img {
+    transform: scale(1.03);
+}
+
+.img-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
 }
 
 /* RESPONSIVE */
-@media screen and (max-width: 768px) {
-    header h1 {
-        font-size: 32px;
-    }
-    header p {
-        font-size: 16px;
-    }
-    .pricing-grid {
-        grid-template-columns: 1fr;
-    }
-}
-/* Testimonials Grid */
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.testimonial-card {
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  font-size: 16px;
-}
-.testimonial-card h4 {
-  margin-top: 12px;
-  color: #2563eb;
-}
-
-/* Portfolio Grid */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.portfolio-item h4 {
-  margin-bottom: 12px;
-  color: #111827;
-  font-size: 18px;
-}
-
-/* Before/After Images Side by Side */
-.before-after {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.image-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 200px;
-}
-.image-wrapper img {
-  width: 100%;
-  border-radius: 12px;
-  display: block;
-}
-.label {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: rgba(37, 99, 235, 0.9);
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 4px;
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    .card, .price-card, .modal-content, .portfolio-card { padding: 30px; }
+    .price-card.recommended { transform: none; }
+    .luxury-grid, .portfolio-grid { grid-template-columns: 1fr; }
 }

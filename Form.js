@@ -25,21 +25,21 @@ const thankYouMessage = document.getElementById('thank-you-message');
 const form = document.getElementById('signup-form');
 
 function openModal(planName) {
-    // Reset to form view every time modal opens
+    // Reset UI
     formContainer.style.display = 'block';
     thankYouMessage.style.display = 'none';
 
-    if(planName) {
-        // Specific plan selected
+    if (planName) {
+        // Plan selected from pricing card
         planSelect.style.display = 'none';
-        planSelect.removeAttribute('name'); 
+        planSelect.removeAttribute('name');
         planSelect.required = false;
 
         planReadOnly.style.display = 'block';
         planReadOnly.value = planName;
-        planReadOnly.setAttribute('name', 'plan'); 
+        planReadOnly.setAttribute('name', 'plan');
     } else {
-        // General "Start Trial" button
+        // Default button
         planReadOnly.style.display = 'none';
         planReadOnly.removeAttribute('name');
 
@@ -47,7 +47,7 @@ function openModal(planName) {
         planSelect.setAttribute('name', 'plan');
         planSelect.required = true;
     }
-    
+
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -58,24 +58,30 @@ function closeModal() {
 }
 
 modal.addEventListener('click', function(e) {
-    if (e.target === modal) {
-        closeModal();
-    }
+    if (e.target === modal) closeModal();
 });
 
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeModal();
-    }
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
 });
 
+
 // 3. FORM SUBMISSION HANDLER
-form.addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent actual page reload
-    
-    // Here you would normally send data to Netlify via fetch if desired
-    // For now, we simulate the success state
-    
-    formContainer.style.display = 'none';
-    thankYouMessage.style.display = 'block';
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    fetch('/', {
+        method: 'POST',
+        body: formData
+    })
+    .then(() => {
+        formContainer.style.display = 'none';
+        thankYouMessage.style.display = 'block';
+        form.reset();
+    })
+    .catch(() => {
+        alert('Form submission failed. Try again.');
+    });
 });
